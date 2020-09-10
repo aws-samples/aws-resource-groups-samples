@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: BeerService
+
+Globals:
+  Function:
+    Timeout: 5
+
+Resources:
+  ResourceGroup:
+    Type: "AWS::ResourceGroups::Group"
+    Properties:
+      Name: "BeerService"
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Policies:
+        - Statement:
+            - Action: ["dynamodb:GetItem", "dynamodb:PutItem"]
+              Effect: Allow
+              Resource:
+                Fn::GetAtt: [DynamoDBTable, Arn]
+      CodeUri: service/
+      Handler: app.lambdaHandler
+      Runtime: nodejs12.x
+      Events:
+        Get:
+          Type: Api
+          Properties:
+            Path: /beer/{name}
+            Method: GET
+            Auth: { Authorizer: AWS_IAM }
+        Put:
+          Type: Api
+          Properties:
+            Path: /beer
+            Method: PUT
+            Auth: { Authorizer: AWS_IAM }
+  DynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - { AttributeName: "BeerName", AttributeType: "S" }
+      KeySchema:
+        - { AttributeName: "BeerName", KeyType: "HASH" }
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      TableName: "Beers"
+
+Outputs:
+  APIEndpoint:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod"

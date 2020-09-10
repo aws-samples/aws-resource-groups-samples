@@ -1,0 +1,12 @@
+{
+  "name": "beer-service",
+  "version": "1.0.0",
+  "description": "Serverless beer service",
+  "main": "app.js",
+  "repository": "TBD",
+  "author": "Florian Katenbrink, Ievgen Tsypkin",
+  "license": "MIT-0",
+  "dependencies": {},
+  "scripts": {},
+  "devDependencies": {}
+}
