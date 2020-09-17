@@ -6,7 +6,7 @@ This repository contains a collection of sample code for [AWS Resource Groups](h
 
 - [Instantly Monitor Serverless Applications](examples/instantly-monitor-serverless-applications)
 
-  This sample beer service contains the source code used in the AWS blog post [Instantly Monitor Serverless Applications with AWS Resource Groups](https://aws.amazon.com/blogs/mt/instantly-monitor-serverless-applications-with-aws-resource-groups). It uses the [Serverless Application Model](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) (SAM) to simplify the creation of resources. The template specification provides a clean syntax to describe functions, APIs, permissions, configurations, and events.
+  This sample beer service contains the source code used in the AWS blog post [Instantly Monitor Serverless Applications with AWS Resource Groups](https://aws.amazon.com/blogs/mt/instantly-monitor-serverless-applications-aws-resource-groups). It uses the [Serverless Application Model](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) (SAM) to simplify the creation of resources. The template specification provides a clean syntax to describe functions, APIs, permissions, configurations, and events.
 
 ## Security
 
